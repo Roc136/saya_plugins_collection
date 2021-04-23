@@ -25,7 +25,7 @@ app = GraiaMiraiApplication(
     )
 )
 
-ignore = ["__init__.py", "__pycache__"]
+ignore = configs['ingore']
 
 with saya.module_context():
     for module in os.listdir("modules"):

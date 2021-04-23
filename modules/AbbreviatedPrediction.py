@@ -14,7 +14,7 @@ from graia.application.exceptions import AccountMuted
 __name__ = "AbbreviatedPrediction"
 __description__ = "一个可以获取字母缩写内容的插件"
 __author__ = "SAGIRI-kawaii"
-__usage__ = "在群内发送 `缩 缩写` 即可"
+__usage__ = "在群内发送 `缩写 缩写` 即可"
 
 saya = Saya.current()
 channel = Channel.current()
@@ -24,7 +24,7 @@ channel.description(f"{__description__}\n使用方法：{__usage__}")
 channel.author(__author__)
 
 
-@channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([RegexMatch('缩 .*')])]))
+@channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([RegexMatch('缩写 .*')])]))
 async def abbreviated_prediction(app: GraiaMiraiApplication, message: MessageChain, group: Group):
     if abbreviation := message.asDisplay()[2:]:
         try:
@@ -49,21 +49,21 @@ async def get_abbreviation_explain(abbreviation: str) -> MessageChain:
         async with session.post(url=url, headers=headers, data=data) as resp:
             res = await resp.json()
     # print(res)
-    result = "可能的结果:\n\n"
+    result = "可能的结果:\n"
     has_result = False
     for i in res:
         if "trans" in i:
             if i["trans"]:
                 has_result = True
-                result += f"{i['name']} => {'，'.join(i['trans'])}\n\n"
+                result += f"{i['name']} => {'，'.join(i['trans'])}\n"
             else:
-                result += f"{i['name']} => 没找到结果！\n\n"
+                result += f"{i['name']} => 没找到结果！\n"
         else:
             if i["inputting"]:
                 has_result = True
-                result += f"{i['name']} => {'，'.join(i['inputting'])}\n\n"
+                result += f"{i['name']} => {'，'.join(i['inputting'])}\n"
             else:
-                result += f"{i['name']} => 没找到结果！\n\n"
+                result += f"{i['name']} => 没找到结果！\n"
 
     if has_result:
         return MessageChain.create([Plain(text=result)])

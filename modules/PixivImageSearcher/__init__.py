@@ -74,12 +74,18 @@ async def pixiv_image_searcher(app: GraiaMiraiApplication, member: Member, group
     await inc.wait(waiter)
     if image_get:
         try:
+            img = await search_image(message_received[Image][0])
             await app.sendGroupMessage(
                 group,
-                await search_image(message_received[Image][0]),
+                img,
                 quote=message_received[Source][0]
             )
         except AccountMuted:
+            await app.sendGroupMessage(
+                group,
+                Plain("搜索失败"),
+                quote=message_received[Source][0]
+            )
             pass
 
 

@@ -15,7 +15,7 @@ from graia.application.exceptions import AccountMuted
 __name__ = "WeiboHotSearch"
 __description__ = "获取当前微博热搜"
 __author__ = "SAGIRI-kawaii"
-__usage__ = "在群内发送 微博 即可"
+__usage__ = "在群内发送 微博热搜 即可"
 
 saya = Saya.current()
 channel = Channel.current()
@@ -25,7 +25,7 @@ channel.description(f"{__description__}\n使用方法：{__usage__}")
 channel.author(__author__)
 
 
-@channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([FullMatch('微博')])]))
+@channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([FullMatch('微博热搜')])]))
 async def group_message_listener(app: GraiaMiraiApplication, group: Group):
     try:
         await app.sendGroupMessage(
