@@ -117,7 +117,7 @@ async def get_steam_game_search(keyword: str, msg_type: str = "text") -> Message
             image.save(path)
         description = await get_steam_game_description(result["app_id"])
         msg = MessageChain.create([
-                Plain(text="\n搜索到以下信息：\n"),
+                Plain(text="搜索到以下信息：\n"),
                 Plain(text="游戏：%s (%s)\n" % (result["name"], result["name_cn"])),
                 Plain(text="游戏id：%s\n" % result["app_id"]),
                 Image.fromLocalFile(path),
