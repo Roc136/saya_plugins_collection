@@ -1,0 +1,37 @@
+{
+  "BotQQ": 123456789,
+  "authKey": "initauthkey",
+  "miraiHost": "http://localhost:8080",
+  "inuse": [
+    "LeetcodeInfoCrawer",
+    "PornhubStyleLogoGenerator",
+    "SteamGameSearcher",
+    "AbbreviatedPrediction.py",
+    "WeiboHotSearch.py",
+    "ZhihuHotSearch.py"
+  ],
+  "ingore": [
+    "__init__.py",
+    "__pycache__",
+
+    "5000zhao",
+    "BangumiInfoSearcher",
+    "BiliResolve",
+    "GroupWordCloudGenerator",
+    "HeadSplicer",
+    "ImageSender",
+    "KeywordDetection",
+    "KeywordReply",
+    "PetPet",
+    "PhantomTank",
+    "PixivImageSearcher",
+    "WyySongOrderer",
+    "BilibiliBangumiSchedule.py",
+    "GithubHotSearch.py",
+    "MessagePrinter.py",
+    "NetworkCompiler.py",
+    "PdfSearcher.py",
+    "Repeater.py",
+    "Text2QrcodeGenerator.py"
+  ]
+}
