@@ -20,6 +20,8 @@ async def get_reply(msg):
         return await get_qingyunke_reply(msg)
     elif bot == 'ruyi':
         return await get_ruyi_reply(msg)
+    elif bot == 'tuling':
+        return await get_tuling_reply(msg)
 
 
 # 青云客机器人，https://api.qingyunke.com
@@ -58,3 +60,34 @@ async def get_ruyi_reply(msg):
             reply = r['property']['text']
     
     return ' ' + reply, img_path, voice_path
+
+
+# 图灵机器人，http://www.tuling123.com/
+async def get_tuling_reply(msg):
+    reply = ' '
+    apiKey = config['tuling']['apiKey']
+    userID = config['tuling']['userID']
+    url = 'http://openapi.tuling123.com/openapi/api/v2'
+    data = {
+        "reqType":0,
+        "perception": {
+            "inputText": {
+                "text": msg
+            }
+        },
+        "userInfo": {
+            "apiKey": apiKey,
+            "userId": userID
+        }
+    }
+    async with ClientSession() as session:
+        async with session.post(url, json = data) as response:
+            content = await response.read()
+            print(content)
+            results = json.loads(content.decode('utf-8'))
+    if results['intent']['code'] == 4003:
+        reply += '我今天不能和你聊天啦~'
+    else:
+        for res in results['results']:
+            reply += res['values']['text']
+    return reply, None, None

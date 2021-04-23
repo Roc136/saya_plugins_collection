@@ -8,5 +8,10 @@
     {
         "appKey": "123456789abcde",
         "userID": "mirai-qq-bot"
+    },
+    "tuling":
+    {
+        "apiKey": "123456789abcde",
+        "userID": "mirai"
     }
 }

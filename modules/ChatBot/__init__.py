@@ -11,7 +11,7 @@ from .utils import get_reply
 
 # 插件信息
 __name__ = "ChatBot"
-__description__ = "QQ聊天机器人"
+__description__ = "QQ聊天机器人,目前已接入青云客、如意和图灵三种机器人"
 __author__ = "Roc"
 __usage__ = "At机器人并发送消息即可"
 
