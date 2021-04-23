@@ -2,14 +2,6 @@
   "BotQQ": 123456789,
   "authKey": "initauthkey",
   "miraiHost": "http://localhost:8080",
-  "inuse": [
-    "LeetcodeInfoCrawer",
-    "PornhubStyleLogoGenerator",
-    "SteamGameSearcher",
-    "AbbreviatedPrediction.py",
-    "WeiboHotSearch.py",
-    "ZhihuHotSearch.py"
-  ],
   "ingore": [
     "__init__.py",
     "__pycache__",
