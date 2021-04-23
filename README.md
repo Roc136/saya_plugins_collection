@@ -14,6 +14,13 @@
 
 注意，若使用本仓库自带启动程序，您需要先将 `configdemo.json` 文件改名为 `config.json` 并填入其中的必要信息
 
+依赖的库：
+
+```bash
+pip install graia-saya
+pip install image
+```
+
 ## 插件列表
 
 - [MessagePrinter](modules/MessagePrinter.py) 一个示例插件，输出所有收到的消息
