@@ -26,7 +26,7 @@ channel.author(__author__)
 
 @channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([RegexMatch('缩写 .*')])]))
 async def abbreviated_prediction(app: GraiaMiraiApplication, message: MessageChain, group: Group):
-    if abbreviation := message.asDisplay()[2:]:
+    if abbreviation := message.asDisplay()[3:]:
         try:
             if abbreviation.isalnum():
                 await app.sendGroupMessage(group, await get_abbreviation_explain(abbreviation))

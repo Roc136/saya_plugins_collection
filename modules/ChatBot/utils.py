@@ -11,7 +11,6 @@ def load_config(config_file: str = "./modules/ChatBot/config.json") -> dict:
 
 
 config = load_config()
-print(config)
 bot = config['bot']
 
 
