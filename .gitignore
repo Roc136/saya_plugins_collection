@@ -16,3 +16,4 @@ test.*
 config.*
 modules/PixivImageSearcher/tempSavedImage.png
 modules/SteamGameSearcher/game_cover_cache
+modules/GarbageClassification/img.jpg

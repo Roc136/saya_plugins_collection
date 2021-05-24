@@ -43,19 +43,26 @@ CITYS = ["北京", "天津", "上海", "重庆", "石家庄", "邯郸", "太原"
 
 def getclassify(thing, city):
     response = ' '
-    img = None
+    img_path = None
     if city in CITYS:
         html = requests.get(f"https://lajifenleiapp.com/sk/{ thing }?l={ city }", headers=headers)
         selector = etree.HTML(html.text)
         try:
             kind = selector.xpath("/html/body/div[1]/div[7]/div/div[1]/h1/span[3]")[0]
             response += f"{ thing }在{ city }属于{ kind.text }"
-            img = selector.xpath("/html/body/div[1]/div[7]/div/div[3]/img/@src")[0]
+            img_url = selector.xpath("/html/body/div[1]/div[7]/div/div[3]/img/@src")[0]
+            try:
+                img_res = requests.get(img_url, headers=headers)
+                img_path = './modules/GarbageClassification/img.jpg'
+                with open(img_path, 'wb') as f:
+                    f.write(img_res.content)
+            except Exception as e:
+                print("img error:", e)
         except:
             response += f"没有找到{ thing }在{ city }的分类信息！"
     else:
         response += f"暂不支持当前城市，支持的城市列表：{ ', '.join(CITYS) }"
-    return response, img
+    return response, img_path
 
 
 @channel.use(ListenerSchema(listening_events=[GroupMessage], inline_dispatchers=[Kanata([RegexMatch('垃圾分类 .*')])]))
@@ -65,10 +72,10 @@ async def group_message_listener(app:GraiaMiraiApplication, message: MessageChai
     if re_res:
         thing = re_res.group(1)
         city = re_res.group(2)
-        print(thing, city)
-        reply, img_url = getclassify(thing, city)
-        if img_url is not None:
-            msg = MessageChain.create([At(member.id), Plain(reply), Image.fromNetworkAddress(img_url)])
+        # print(thing, city)
+        reply, img_path = getclassify(thing, city)
+        if img_path is not None:
+            msg = MessageChain.create([At(member.id), Plain(reply), Image.fromLocalFile(img_path)])
         else:
             msg = MessageChain.create([At(member.id), Plain(reply)])
         try:
