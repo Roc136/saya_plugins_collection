@@ -17,7 +17,7 @@ from lxml import etree
 __name__ = "GarbageClassification"
 __description__ = "查询某个城市对某种物品的垃圾分类"
 __author__ = "Roc"
-__usage__ = "发送 垃圾分类：物品 城市"
+__usage__ = "发送 \"垃圾分类 物品 城市\"即可"
 
 
 saya = Saya.current()
