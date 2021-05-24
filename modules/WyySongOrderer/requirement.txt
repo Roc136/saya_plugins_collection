@@ -1,0 +1,5 @@
+JPype1
+ffmpeg
+pydub
+aiofiles
+aiohttp
