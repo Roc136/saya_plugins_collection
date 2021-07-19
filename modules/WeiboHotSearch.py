@@ -37,7 +37,7 @@ async def group_message_listener(app: GraiaMiraiApplication, message: MessageCha
     try:
         await app.sendGroupMessage(
             group,
-            await get_weibo_hot(num, "text")
+            await get_weibo_hot(num, "text" if num > 0 else "img")
         )
     except AccountMuted:
         print("passed")
