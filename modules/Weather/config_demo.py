@@ -9,6 +9,9 @@ TIME = {
     "当前": "now",
     "现在": "now",
     "24小时": "24h",
+    "今天": "24h",
+    "明天": "3d",
+    "后天": "3d",
     "近三天": "3d",
     "近七天": "7d"
 }
@@ -44,7 +47,7 @@ MSG_TEMPLATE = {
     },
     "3d": {
         "text": Template(
-            "未来三天$city的天气情况为(时间倒序):\n"
+            "$time$city的天气情况为:\n"
             "$daily_data\n"
             "数据来源:$sources\n"
             "版权:$license"
@@ -55,7 +58,7 @@ MSG_TEMPLATE = {
     },
     "7d": {
         "text": Template(
-            "未来七天$city的天气情况为(时间倒序):\n"
+            "$time$city的天气情况为(时间倒序):\n"
             "$daily_data\n"
             "数据来源:$sources\n"
             "版权:$license"
@@ -113,7 +116,7 @@ SIMPLE_MSG_TEMPLATE = {
     },
     "3d": {
         "text": Template(
-            "未来三天$city的天气情况为:\n"
+            "$time$city的天气情况为:\n"
             "$daily_data"
             "数据来源:$sources, 版权:$license\n"
             "发送地区+时间+\"详细天气\"查看详细天气，如：北京24小时详细天气预报"
@@ -122,7 +125,7 @@ SIMPLE_MSG_TEMPLATE = {
     },
     "7d": {
         "text": Template(
-            "未来七天$city的天气情况为:\n"
+            "$time$city的天气情况为:\n"
             "$daily_data"
             "数据来源:$sources, 版权:$license\n"
             "发送地区+时间+\"详细天气\"查看详细天气，如：北京24小时详细天气预报"

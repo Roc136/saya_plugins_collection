@@ -1,7 +1,7 @@
 import requests
 import json
 import re
-from .config import *
+from config import *
 
 # 和风天气
 
@@ -38,6 +38,7 @@ def get_weather(city, time, simple_flag=1, msg_type='text'):
         daily_data_template = DAILY_DATA_TEMPLATE
     # 检查并标准化参数
     city, city_id = get_city_id(city)
+    time_s = time
     if time in TIME.keys():
         time = TIME[time]
     elif time in TIME.values():
@@ -80,14 +81,28 @@ def get_weather(city, time, simple_flag=1, msg_type='text'):
             elif time in ["3d", "7d"]:
                 data = {
                     "city": city,
+                    "time": time_s,
                     "daily_data": ""
                 }
-                for d in results['daily']:
+                time2index = {
+                    "今天": 0,
+                    "明天": 1,
+                    "后天": 2
+                }
+                if time_s in time2index.keys():
+                    d = results['daily'][time2index[time_s]]
                     d['fxDate'] = d['fxDate'][5:10]
                     if simple_flag:
                         data['daily_data'] += daily_data_template.substitute(d)
                     else:
                         data['daily_data'] = daily_data_template.substitute(d) + data['daily_data']
+                else:
+                    for d in results['daily']:
+                        d['fxDate'] = d['fxDate'][5:10]
+                        if simple_flag:
+                            data['daily_data'] += daily_data_template.substitute(d)
+                        else:
+                            data['daily_data'] = daily_data_template.substitute(d) + data['daily_data']
                 # print(data)
             else:  # 不支持的查询
                 return 'time error'
@@ -130,5 +145,5 @@ def text2params(text:str):
 
 
 if __name__ == "__main__":
-    city, time, flag = text2params("北京近三天天气预报")
+    city, time, flag = text2params("北京近七天天气预报")
     print(get_weather(city, time, flag))
