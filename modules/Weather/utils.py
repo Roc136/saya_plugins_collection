@@ -1,7 +1,7 @@
 import requests
 import json
 import re
-from config import *
+from .config import *
 
 # 和风天气
 
