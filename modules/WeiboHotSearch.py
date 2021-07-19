@@ -67,6 +67,8 @@ async def get_weibo_hot(num: int = 0, display: str = "img") -> MessageChain:
         text += "\n" + quote(url_tmp, safe=";/?:@&=+$,", encoding="utf-8")
     else:
         text = "数字超出范围"
+    if num == 0:
+        text += "\n发送“微博热搜+数字”查看详细信息，如“微博热搜1”"
     msg = MessageChain.create([
         Plain(text=text)
     ])
