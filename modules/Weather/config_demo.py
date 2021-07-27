@@ -1,6 +1,8 @@
 from string import Template
 
 # 和风天气配置
+# https://dev.qweather.com/
+
 
 KEY = "1324567890abcdefg"
 CITY_URL = "https://geoapi.qweather.com/v2/city/lookup"
