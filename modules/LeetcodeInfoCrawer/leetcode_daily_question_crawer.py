@@ -30,6 +30,7 @@ async def get_leetcode_daily_question(language: str = "Zh") -> MessageChain:
                     img_content = await resp.read()
                     image = IMG.open(BytesIO(img_content))
                     print(f"./modules/LeetcodeInfoCrawer/temp/tempQuestion{count}.jpg")
+                    image = image.convert("RGB")
                     image.save(f"./modules/LeetcodeInfoCrawer/temp/tempQuestion{count}.jpg")
                     msg_list.append(Image.fromLocalFile(f"./modules/LeetcodeInfoCrawer/temp/tempQuestion{count}.jpg"))
                     count += 1
