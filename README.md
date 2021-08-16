@@ -56,3 +56,4 @@ pip install image
 - [GarbageClassification](modules/GarbageClassification) 获取垃圾分类信息
 - [ChatBot](modules/Weather) 天气预报
 - [ChatBot](modules/Menu) 菜单
+- [ChatBot](modules/GenShinUID) 原神玩家信息查询
