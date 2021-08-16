@@ -1,3 +1,7 @@
+## 注：
+
+本仓库是个人使用的一个分支，原仓库[saya_plugins_colection](https://github.com/SAGIRI-kawaii/saya_plugins_collection)，本仓库的master分支是本人修改过的，与原仓库有区别，dev分支会与原仓库的master分支同步更新。
+
 # 一个Graia-Saya的插件仓库
 
 这是一个存储基于 [Graia-Saya](https://github.com/GraiaProject/Saya) 的插件的仓库
@@ -50,7 +54,5 @@ pip install image
 - [BiliResolve](modules/BiliResolve) B站视频分享解析
 - [ChatBot](modules/ChatBot) 聊天机器人
 - [GarbageClassification](modules/GarbageClassification) 获取垃圾分类信息
-
-## 其他
-
-目前正在进行 SAGIRI-BOT 的重构工作，暂时无法更新插件，若您有好的插件或有好的想法，欢迎 Pr 或提 ISSUE
+- [ChatBot](modules/Weather) 天气预报
+- [ChatBot](modules/Menu) 菜单
