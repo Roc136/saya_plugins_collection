@@ -56,4 +56,4 @@ pip install image
 - [GarbageClassification](modules/GarbageClassification) 获取垃圾分类信息
 - [Weather](modules/Weather) 天气预报
 - [Menu](modules/Menu) 菜单
-- [GenShinUID](modules/GenShinUID) 原神玩家信息查询
+- [GenshinUID](modules/GenshinUID) 原神玩家信息查询
