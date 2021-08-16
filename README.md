@@ -54,6 +54,6 @@ pip install image
 - [BiliResolve](modules/BiliResolve) B站视频分享解析
 - [ChatBot](modules/ChatBot) 聊天机器人
 - [GarbageClassification](modules/GarbageClassification) 获取垃圾分类信息
-- [ChatBot](modules/Weather) 天气预报
-- [ChatBot](modules/Menu) 菜单
-- [ChatBot](modules/GenShinUID) 原神玩家信息查询
+- [Weather](modules/Weather) 天气预报
+- [Menu](modules/Menu) 菜单
+- [GenShinUID](modules/GenShinUID) 原神玩家信息查询
